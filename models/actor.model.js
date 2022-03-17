@@ -1,3 +1,4 @@
+const { DataTypes } = require('sequelize');
 const { sequelize } = require('../util/database');
 
 const Actor = sequelize.define('actor', {
@@ -8,7 +9,7 @@ const Actor = sequelize.define('actor', {
     allowNull: false
   },
   name: {
-    type: DataTypes.STRING(150),
+    type: DataTypes.STRING(100),
     allowNull: false
   },
   country: {
@@ -18,7 +19,8 @@ const Actor = sequelize.define('actor', {
 
   rating: {
     type: DataTypes.INTEGER,
-    allowNull: false
+    allowNull: false,
+    defaultValue: 0
   },
   age: {
     type: DataTypes.INTEGER,
@@ -26,8 +28,9 @@ const Actor = sequelize.define('actor', {
   },
 
   profilePic: {
-    type: DataTypes.STRING(55),
-    allowNull: false
+    type: DataTypes.STRING(255),
+    allowNull: false,
+    
   },
   status: {
     // active | deleted

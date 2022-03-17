@@ -1,3 +1,4 @@
+const { DataTypes } = require('sequelize');
 const { sequelize } = require('../util/database');
 
 const Review = sequelize.define('review', {
@@ -12,12 +13,13 @@ const Review = sequelize.define('review', {
     allowNull: false
   },
   comment: {
-    type: DataTypes.STRING(100),
+    type: DataTypes.STRING(255),
     allowNull: false
   },
   rating: {
     type: DataTypes.INTEGER,
-    allowNull: false
+    allowNull: false,
+    defaultValue: 1
   },
   status: {
     // active | deleted

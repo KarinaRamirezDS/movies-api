@@ -2,7 +2,7 @@ const { app } = require('./app');
 
 // Utils
 const { sequelize } = require('./util/database');
-//const { initModels } = require('./util/initModels');
+const { initModel } = require('./util/initModels');
 
 sequelize
   .authenticate()
@@ -10,7 +10,7 @@ sequelize
   .catch((err) => console.log(err));
 
 // Models relations
-//initModels();
+initModel();
 
 sequelize
   .sync()

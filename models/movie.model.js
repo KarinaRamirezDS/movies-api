@@ -1,3 +1,4 @@
+const { DataTypes } = require('sequelize');
 const { sequelize } = require('../util/database');
 
 const Movie = sequelize.define('movie', {
