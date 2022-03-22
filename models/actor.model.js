@@ -31,7 +31,6 @@ const Actor = sequelize.define('actor', {
     type: DataTypes.STRING(255),
     allowNull: false,
     defaultValue: ''
-    
   },
   status: {
     // active | deleted
@@ -39,7 +38,6 @@ const Actor = sequelize.define('actor', {
     allowNull: false,
     defaultValue: 'active'
   }
-
 });
 
 module.exports = { Actor };

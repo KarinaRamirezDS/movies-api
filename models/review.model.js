@@ -34,7 +34,7 @@ const Review = sequelize.define('review', {
   movieId: {
     type: DataTypes.INTEGER,
     allowNull: false
-  },
+  }
 });
 
 module.exports = { Review };

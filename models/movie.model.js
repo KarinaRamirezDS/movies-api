@@ -38,7 +38,6 @@ const Movie = sequelize.define('movie', {
     allowNull: false,
     defaultValue: 'active'
   }
-
 });
 
 module.exports = { Movie };

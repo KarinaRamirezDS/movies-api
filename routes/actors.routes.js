@@ -1,11 +1,11 @@
 const express = require('express');
 
 const {
-    getAllActors,
-    getActorById,
-    createNewActor,
-    updateActor,
-    deleteActor
+  getAllActors,
+  getActorById,
+  createNewActor,
+  updateActor,
+  deleteActor
 } = require('../controllers/actor.controller');
 
 const router = express.Router();

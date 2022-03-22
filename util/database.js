@@ -12,9 +12,6 @@ const sequelize = new Sequelize({
   database: process.env.DB, // example
   dialect: 'postgres',
   logging: false
-
 });
-
-
 
 module.exports = { sequelize };
