@@ -15,6 +15,7 @@ const app = express();
 
 // Enable JSON incoming data
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Endpoints
 app.use('/api/v1/actors', actorsRouter);

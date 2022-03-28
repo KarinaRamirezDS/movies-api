@@ -30,7 +30,7 @@ const Actor = sequelize.define('actor', {
   profilePic: {
     type: DataTypes.STRING(255),
     allowNull: false,
-    defaultValue: ''
+    defaultValue: false
   },
   status: {
     // active | deleted

@@ -2,6 +2,8 @@ const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 const { promisify } = require('util');
 
+//models
+const { User } = require('../models/user.model');
 
 // Utils
 const { AppError } = require('../util/appError');
@@ -10,14 +12,12 @@ const { catchAsync } = require('../util/catchAsync');
 dotenv.config({ path: './config.env' });
 
 exports.validateSession = catchAsync(async (req, res, next) => {
-  // Extract token from headers
   let token;
 
   if (
     req.headers.authorization &&
     req.headers.authorization.startsWith('Bearer')
   ) {
-    // Bearer token123.split(' ') -> [Bearer, token123]
     token = req.headers.authorization.split(' ')[1];
   }
 
@@ -32,7 +32,6 @@ exports.validateSession = catchAsync(async (req, res, next) => {
   );
 
   // Validate that the id the token contains belongs to a valid user
-  // SELECT id, email FROM users;
   const user = await User.findOne({
     where: { id: decodedToken.id, status: 'active' },
     attributes: {
@@ -41,11 +40,17 @@ exports.validateSession = catchAsync(async (req, res, next) => {
   });
 
   if (!user) {
-    return next(new AppError(401, 'Invalid session'));
+    return next(new AppError(401, 'Invalid session :( '));
   }
 
-  console.log(user);
+  req.currentUser = user;
 
-  // Grant access
+  next();
+});
+
+exports.protectAdmin = catchAsync(async (req, res, next) => {
+  if (req.currentUser.role !== 'admin') {
+    return next(new AppError(403, 'Access denied'));
+  }
   next();
 });
